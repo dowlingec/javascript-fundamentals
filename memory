@@ -6,7 +6,7 @@ greet()
 const square = (num) => {
     return num * num
 }
-square(100)
+square(10)
 
 const greetByName = (str) => {
     console.log('Hello', str)
