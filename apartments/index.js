@@ -1,11 +1,12 @@
 let apt1 = {
-    bedrooms: 2,
+    bedrooms: 4,
     sqft: 50,
     bathrooms: 3,
     windows: 0,
     rent: 4500,
     unit: '1A',
     lease: function (tenant) {
+        if (this.tenants.length === this.bedrooms) return `${this.unit} is already full!`
         this.tenants.push(tenant)
         console.log(tenant.name, 'has rented out', this.unit)
     },
