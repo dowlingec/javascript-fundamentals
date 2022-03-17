@@ -1,5 +1,5 @@
 let apt1 = {
-    bedrooms: 4,
+    bedrooms: 4 ,
     sqft: 50,
     bathrooms: 3,
     windows: 0,
