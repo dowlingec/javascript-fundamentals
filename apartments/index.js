@@ -5,7 +5,7 @@ let apt1 = {
     windows: 0,
     rent: 4500,
     unit: '1A',
-    tenants: []
+    tenants: [],
 }
 
 let apt2 = {
@@ -43,6 +43,7 @@ let tenant1 = {
     creditScore: 400,
     salary: 15000,
     age: 30,
+    pet: 'Jpeg'
 }
 
 let tenant2 = {
@@ -57,7 +58,11 @@ let building = {
     laundry: false,
     allowsPets: false,
     lease: function(apt, tenant) {
-        if (apt.tenants.length === apt.bedrooms) return `${apt.unit} is already full!`
+        if (apt.tenants.length === apt.bedrooms) {
+            return `${apt.unit} is already full!`}
+        if (this.allowsPets === false && tenant.pet) {
+            return `${apt.unit} is available, but you must give ${tenant.pet} up for adoption.`
+        }
         apt.tenants.push(tenant)
         console.log(tenant.name, 'has rented out', apt.unit)
     },
