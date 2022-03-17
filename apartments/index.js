@@ -5,6 +5,10 @@ let apt1 = {
     windows: 0,
     rent: 4500,
     unit: '1A',
+    lease: function (tenant) {
+        this.tenants.push(tenant)
+        console.log(tenant.name, 'has rented out', this.unit)
+    },
     tenants: []
 }
 
@@ -58,3 +62,5 @@ let building = {
     allowsPets: false,
     apartments : [apt1, apt2, apt3]
 }
+
+// apt1.lease(tenant1)
