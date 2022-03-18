@@ -59,14 +59,30 @@ let building = {
     allowsPets: false,
     lease: function(apt, tenant) {
         if (apt.tenants.length === apt.bedrooms) {
-            return `${apt.unit} is already full!`}
+            return `${apt.unit} is already full!`
+        }
         if (this.allowsPets === false && tenant.pet) {
             return `${apt.unit} is available, but you must give ${tenant.pet} up for adoption.`
         }
-        apt.tenants.push(tenant)
+        let t = apt.tenants.push(tenant)
         console.log(tenant.name, 'has rented out', apt.unit)
+        return t
     },
-    apartments : [apt1, apt2, apt3]
+    occupiedApts: function() {
+        //rtn apartment with tenants
+        //condition to test: apt.tenants.length()
+        return this.apartments.filter((el) => {
+            return el.tenants.length > 0
+        })
+    },
+    fullApts: function() {
+        //returns only the apartments which are completely full
+        //conditiion to test: apt.tenants.length === apt.bedrooms
+        return this.apartments.filter((el) => {
+            return el.tenants.length === el.bedrooms
+        })
+    },
+    apartments: [apt1, apt2, apt3]
 }
 
 // apt1.lease(tenant1)
