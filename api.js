@@ -1,32 +1,20 @@
 //create function called request
 let div = document.getElementById('container')
-let data
+//locate element we are working with
 
-const request = () => {
-    fetch('https://raw.githubusercontent.com/dowlingec/javascript-fundamentals/main/user.json')
-    .then((res) => {
-        return res.json()
-    })
-    .then((data) => {
-        console.log('Data returned is', data)
-        div.InnerText = data.user.email;
-        return data.user.email
-    })
-    //.then() is  saying after fetch() has excuted continue here
-    return "done with function"
-}
-
-//alt without .thens ASYNC AWAIT
-const request2 = async () => {
-    let req = await fetch('https://raw.githubusercontent.com/dowlingec/javascript-fundamentals/main/user.json')
+const request = async () => {
+    let req = await fetch('https://raw.githubusercontent.com/rmdashrfv/javascript-fundamentals/main/mock_data.json')
     let res = await req.json()
-    console.log("RESPONSE 2", res)
-    data = res
-    return res
+    console.log('Response', res)
+    res.forEach((element) => {
+        // console.log('Elements', element.vacancies) to test
+        let aptImg = document.createElement('img')
+        //new var creating new element to reference later
+        aptImg.setAttribute('src', element.photo)
+        //set attribute to new element
+        div.appendChild(aptImg)
+        //append newly created element to div container
+    })
 }
-request2()
-
-//
-// let data = (aync() => await request2())()
-//this lets us access data returned by request2
-//insteasd assign ioen variable in global, then assign it within the function as above (not muted)
+request()
+//invoke function to fetch api and append images to DOM
