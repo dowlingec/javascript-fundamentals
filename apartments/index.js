@@ -86,3 +86,20 @@ let building = {
 }
 
 // apt1.lease(tenant1)
+const div = document.getElementById("building")
+
+const render = () => {
+    let h2 = document.createElement('h2')
+    h2.innerText = building.streetAddress
+    //append you can append multiple
+    //appendChild only 1 at a time (this would improve my test code!)
+    let ul = document.createElement('ul')
+    building.apartments.forEach((element) => {
+        let li = document.createElement('li')
+        li.innerText = element.unit
+        ul.append(li)
+    })
+    div.append(h2, ul)
+    //append outside the function so all elements from loopare appended at once
+}
+render()
